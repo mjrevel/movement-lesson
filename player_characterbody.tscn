@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://byswwxh6y7wm3"]
+
+[ext_resource type="Script" uid="uid://6tjykqnjml1f" path="res://player_characterbody.gd" id="1_4flbx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ilcil"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nydh0"]
+size = Vector3(1.1, 0.4, 1.1)
+
+[node name="Player" type="CharacterBody3D" unique_id=825844251]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1946269865]
+shape = SubResource("BoxShape3D_ilcil")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1277253638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674068, 0)
+shape = SubResource("BoxShape3D_nydh0")

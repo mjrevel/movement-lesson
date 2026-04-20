@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://lgx3hc0kn68p"]
+
+[ext_resource type="PackedScene" uid="uid://bkour2geqefqc" path="res://player_rigidbody.tscn" id="1_3hls8"]
+[ext_resource type="Script" uid="uid://dn4j10h7e4ykg" path="res://level_1.gd" id="1_hbghi"]
+[ext_resource type="PackedScene" uid="uid://d0j1pq0q7urew" path="res://ui.tscn" id="2_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://byswwxh6y7wm3" path="res://player_characterbody.tscn" id="3_hn12h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilcil"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3hls8"]
+sky_material = SubResource("ProceduralSkyMaterial_ilcil")
+
+[sub_resource type="Environment" id="Environment_hbghi"]
+background_mode = 1
+background_color = Color(0.026518513, 0.026518513, 0.026518509, 1)
+sky = SubResource("Sky_3hls8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn12h"]
+size = Vector3(0.22, 2.27, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ihfcg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hn12h"]
+friction = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihfcg"]
+size = Vector3(0.3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3hls8"]
+size = Vector3(5, 0.1, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ihfcg"]
+friction = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rka8t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hph3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7kpp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjebc"]
+
+[node name="Level1" type="Node3D" unique_id=1711455957]
+script = ExtResource("1_hbghi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=135960013]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.47492337, -0.86874306, 0.1404753, 0.15635817, 0.24038604, 0.9580014, -8.910907, 3.141576, 4.2181406)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=850716634]
+environment = SubResource("Environment_hbghi")
+
+[node name="UI" parent="." unique_id=890854725 instance=ExtResource("2_ihfcg")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=42337141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6327949, 9.825052)
+
+[node name="ObstacleStatic" type="StaticBody3D" parent="." unique_id=1386601747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleStatic" unique_id=1078195003]
+shape = SubResource("BoxShape3D_hn12h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleStatic" unique_id=1939083884]
+transform = Transform3D(0.21697307, 0, 0, 0, 2.2371387, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ihfcg")
+
+[node name="ObstacleRigid" type="RigidBody3D" parent="." unique_id=1149870846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5870764, 3.1067824, 0)
+visible = false
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_hn12h")
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleRigid" unique_id=514304333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9664884, 0)
+visible = false
+shape = SubResource("BoxShape3D_ihfcg")
+
+[node name="Platform0" type="CSGCombiner3D" parent="." unique_id=949219095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.477838, 0)
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Platform0" unique_id=970717961]
+transform = Transform3D(10.34518, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.73090434, 0)
+mesh = SubResource("BoxMesh_3hls8")
+
+[node name="Player0" parent="." unique_id=1551981076 instance=ExtResource("1_3hls8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5011091, 0)
+physics_material_override = SubResource("PhysicsMaterial_ihfcg")
+linear_damp_mode = 1
+linear_damp = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player0" unique_id=1631755473]
+mesh = SubResource("BoxMesh_rka8t")
+
+[node name="PlayerText0" type="Label3D" parent="." unique_id=872448988]
+transform = Transform3D(3.0247848, 0, 0, 0, 3.0247848, 0, 0, 0, 1, -12.983802, -2.806061, 0)
+text = "Impulse"
+horizontal_alignment = 0
+
+[node name="Platform" type="CSGCombiner3D" parent="." unique_id=1788512811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0028071, 0)
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Platform" unique_id=1147863266]
+transform = Transform3D(10.34518, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.73090434, 0)
+mesh = SubResource("BoxMesh_3hls8")
+
+[node name="Player" parent="." unique_id=901363984 instance=ExtResource("1_3hls8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0028071, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=399130408]
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="PlayerText" type="Label3D" parent="." unique_id=1815421986]
+transform = Transform3D(3.0247848, 0, 0, 0, 3.0247848, 0, 0, 0, 1, -12.983802, -0.32541585, 0)
+text = "Impulse"
+horizontal_alignment = 0
+
+[node name="Platform2" type="CSGCombiner3D" parent="." unique_id=1762704550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4115515, 0)
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Platform2" unique_id=389646358]
+transform = Transform3D(10.34518, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.73090434, 0)
+mesh = SubResource("BoxMesh_3hls8")
+
+[node name="Player2" parent="." unique_id=1460565870 instance=ExtResource("1_3hls8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4115515, 0)
+fixed_force = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player2" unique_id=205640532]
+mesh = SubResource("BoxMesh_j7kpp")
+
+[node name="PlayerText2" type="Label3D" parent="." unique_id=1153737987]
+transform = Transform3D(3.0247848, 0, 0, 0, 3.0247848, 0, 0, 0, 1, -12.983802, 2.0833285, 0)
+text = "Force"
+horizontal_alignment = 0
+
+[node name="Platform3" type="CSGCombiner3D" parent="." unique_id=1521514862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8195887, 0)
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Platform3" unique_id=950661247]
+transform = Transform3D(10.34518, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.73090434, 0)
+mesh = SubResource("BoxMesh_3hls8")
+
+[node name="Player3" parent="." unique_id=825844251 instance=ExtResource("3_hn12h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7203274, 0)
+movement = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player3" unique_id=1972992140]
+mesh = SubResource("BoxMesh_bjebc")
+
+[node name="PlayerText3" type="Label3D" parent="." unique_id=2089463580]
+transform = Transform3D(3.0247848, 0, 0, 0, 3.0247848, 0, 0, 0, 1, -12.983802, 4.4913654, 0)
+text = "Force"
+horizontal_alignment = 0

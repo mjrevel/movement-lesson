@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bkour2geqefqc"]
+
+[ext_resource type="Script" uid="uid://fen7thx38txr" path="res://player_rigidbody.gd" id="1_tajqn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tajqn"]
+friction = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tajqn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e5w43"]
+size = Vector3(1.2, 0.275, 1.2)
+
+[node name="Player" type="RigidBody3D" unique_id=901363984]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_tajqn")
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 0.5
+script = ExtResource("1_tajqn")
+use_integrated_forces = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2017550520]
+shape = SubResource("BoxShape3D_tajqn")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1696438781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10366392, 0)
+shape = SubResource("BoxShape3D_e5w43")
+target_position = Vector3(0, -0.285, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1571091633]
+visible = false
+
+[node name="IsSleeping" type="Label" parent="CanvasLayer" unique_id=1343659065]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0

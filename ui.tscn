@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://d0j1pq0q7urew"]
+
+[node name="UI" type="Control" unique_id=890854725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ForceLabel" type="Label" parent="." unique_id=620477998]
+layout_mode = 1
+offset_left = 3.0
+offset_right = 202.0
+offset_bottom = 23.0
+text = "Apply Force in X Direction"
+
+[node name="ForceSlider" type="HSlider" parent="." unique_id=1175623669]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 35.0
+offset_right = 203.0
+offset_bottom = 51.0
+scale = Vector2(1.0106384, 1)
+focus_mode = 0
+min_value = -10.0
+max_value = 10.0
+
+[node name="StaticLabel" type="Label" parent="." unique_id=39200897]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "StaticBody Block"
+
+[node name="StaticSlider" type="VSlider" parent="." unique_id=1249246965]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = 26.0
+offset_right = -1.0
+offset_bottom = 176.0
+grow_horizontal = 0
+min_value = -1.0
+max_value = 8.0
+step = 0.05
+value = 8.0
+
+[node name="Label" type="Label" parent="." unique_id=354478810]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 68.0
+offset_right = 241.0
+offset_bottom = 91.0
+text = "Use Arrow Keys For Movement"
