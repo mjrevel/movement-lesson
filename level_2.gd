@@ -15,11 +15,6 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	$PlayerText0.text = "RigidBody | Impulse | No Drag | Velocity = " + str($Player0.linear_velocity.x)
-	$PlayerText.text = "RigidBody | Impulse | Velocity = " + str($Player.linear_velocity.x)
-	$PlayerText2.text = "RigidBody | Force | Velocity = " + str($Player2.linear_velocity.x)
-	$PlayerText3.text = "CharacterBody | Move And Slide | Velocity = " + str($Player3.velocity.x)
-
 	$ObstacleStatic.global_position.y = $UI/StaticSlider.value
 	
 	for child in get_children():

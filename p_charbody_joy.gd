@@ -1,11 +1,17 @@
 extends CharacterBody3D
 
-
 const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
-
 enum MoveType {MOVE_AND_SLIDE, MOVE_AND_COLLIDE}
+
 @export var movement: MoveType = MoveType.MOVE_AND_SLIDE
+@export var device_id: int = 0
+
+var p: String
+var jump_request: bool = false
+
+func _ready() -> void:
+	p = "p%d_" % device_id
 
 func _physics_process(delta: float) -> void:
 	if movement == MoveType.MOVE_AND_SLIDE:
@@ -18,15 +24,17 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		else:
 			velocity.y = 0
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() || on_ground()):
-		velocity.y = JUMP_VELOCITY
+	
+	if jump_request == true:
+		if is_on_floor() || on_ground():
+			velocity.y = JUMP_VELOCITY
+		jump_request = false
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir := Input.get_vector(p + "MOVE_LEFT", p + "MOVE_RIGHT", p + "MOVE_UP", p + "MOVE_DOWN")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#print(input_dir)
 	if direction:
 		velocity.x = direction.x * SPEED
 		# Disabled to prevent the object from falling off the platform
@@ -35,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		# Disabled to prevent the object from falling off the platform
 		#velocity.z = move_toward(velocity.z, 0, SPEED)
-		
 		
 	if global_position.x > 10:
 		global_position.x = -9
@@ -49,10 +56,18 @@ func _physics_process(delta: float) -> void:
 	if movement == MoveType.MOVE_AND_SLIDE:
 		move_and_slide()
 	elif movement == MoveType.MOVE_AND_COLLIDE:
-		var collision = move_and_collide(velocity * delta)
+		var collision := move_and_collide(velocity * delta)
 		#print(collision)
 		#if collision:
 			#velocity = velocity.slide(collision.get_normal())
 			
 func on_ground() -> bool:
-	return $ShapeCast3D.is_colliding()
+	return $ShapeCast3D.is_colliding()	
+	
+func _unhandled_input(event):
+	if event.device != device_id:
+		return
+
+	# Handle jump.
+	if event.is_action_pressed(p + "JUMP"):
+		jump_request = true

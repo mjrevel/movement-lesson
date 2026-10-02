@@ -13,7 +13,7 @@ enum ForceNames {NONE, IMPULSE, FORCE}
 func _ready() -> void:
 	can_sleep = false
 	#apply_central_impulse(Vector3(2,0, 0))
-
+	$"../Obstacles/AnimatableBody3D/AnimationPlayer".play("move")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,10 +51,10 @@ func on_ground() -> bool:
 func _integrate_forces(state):
 	var dir := Vector3()
 	dir.x = Input.get_axis("ui_left", "ui_right")
-	if global_position.x > 10:
-		global_position.x = -9
-	elif global_position.x < -10:
-		global_position.x = 9
+	if global_position.x > 15:
+		global_position.x = -14
+	elif global_position.x < -15:
+		global_position.x = 14
 	state.apply_force(dir.normalized() * SPEED)
 	# Reset the velocity if the object is going too fast
 	#if state.linear_velocity.x > 30:

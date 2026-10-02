@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dn4j10h7e4ykg" path="res://level_1.gd" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://d0j1pq0q7urew" path="res://ui.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://byswwxh6y7wm3" path="res://player_characterbody.tscn" id="3_hn12h"]
+[ext_resource type="Script" uid="uid://dampcxho45ay1" path="res://p_charbody_joy.gd" id="5_rka8t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilcil"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -152,9 +153,20 @@ mesh = SubResource("BoxMesh_3hls8")
 
 [node name="Player3" parent="." unique_id=825844251 instance=ExtResource("3_hn12h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7203274, 0)
+script = ExtResource("5_rka8t")
 movement = 1
+device_id = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player3" unique_id=1972992140]
+mesh = SubResource("BoxMesh_bjebc")
+
+[node name="Player4" parent="." unique_id=2126950180 instance=ExtResource("3_hn12h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.094, 5.7203274, 0)
+script = ExtResource("5_rka8t")
+movement = 1
+device_id = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player4" unique_id=136677075]
 mesh = SubResource("BoxMesh_bjebc")
 
 [node name="PlayerText3" type="Label3D" parent="." unique_id=2089463580]
