@@ -3,11 +3,11 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var custom_actions := get_custom_actions()
-	create_actions_for_device(0, custom_actions)
-	create_actions_for_device(1, custom_actions)
+	for i in range(len(Input.get_connected_joypads())):
+		var custom_actions := get_custom_actions()
+		create_actions_for_device(i, custom_actions)
 	
-	print(InputMap.get_actions())
+	#print(InputMap.get_actions())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +20,6 @@ func _physics_process(delta: float) -> void:
 	for child in get_children():
 		if child is PhysicsBody3D && child.has_method("apply_force"):
 			child.apply_force(Vector3($UI/ForceSlider.value, 0, 0))
-			
-	#print(Input.get_connected_joypads())
 	
 func get_custom_actions() -> Array[StringName]:
 	var custom: Array[StringName] = []

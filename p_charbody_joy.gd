@@ -5,13 +5,16 @@ const JUMP_VELOCITY = 4.5
 enum MoveType {MOVE_AND_SLIDE, MOVE_AND_COLLIDE}
 
 @export var movement: MoveType = MoveType.MOVE_AND_SLIDE
-@export var device_id: int = 0
+@export var device_id: String = "0"
 
 var p: String
 var jump_request: bool = false
 
 func _ready() -> void:
-	p = "p%d_" % device_id
+	if device_id == "0":
+		p = ""
+	else:
+		p = "p%s_" % device_id
 
 func _physics_process(delta: float) -> void:
 	if movement == MoveType.MOVE_AND_SLIDE:
@@ -55,18 +58,28 @@ func _physics_process(delta: float) -> void:
 		
 	if movement == MoveType.MOVE_AND_SLIDE:
 		move_and_slide()
+		
+		for i in get_slide_collision_count():
+			var collider = get_slide_collision(i).get_collider()
+			if collider is CharacterBody3D:
+				collider.apply_impulse(direction.normalized() * SPEED * delta * 200)
+		
 	elif movement == MoveType.MOVE_AND_COLLIDE:
 		var collision := move_and_collide(velocity * delta)
 		#print(collision)
-		#if collision:
-			#velocity = velocity.slide(collision.get_normal())
+		if collision:
+			var collider = collision.get_collider()
+			if collider is RigidBody3D:
+				collider.apply_impulse(direction.normalized() * SPEED * delta * 200)
+				#velocity = velocity.slide(collision.get_normal())
 			
 func on_ground() -> bool:
 	return $ShapeCast3D.is_colliding()	
 	
 func _unhandled_input(event):
-	if event.device != device_id:
-		return
+	#if event.device != int(device_id):
+		#print(event.device)
+		#return
 
 	# Handle jump.
 	if event.is_action_pressed(p + "JUMP"):

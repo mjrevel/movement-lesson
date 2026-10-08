@@ -16,3 +16,5 @@ shape = SubResource("BoxShape3D_ilcil")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1277253638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674068, 0)
 shape = SubResource("BoxShape3D_nydh0")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
