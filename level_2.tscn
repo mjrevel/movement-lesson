@@ -127,8 +127,6 @@ mesh = SubResource("BoxMesh_5hph3")
 [node name="Player3" parent="." unique_id=825844251 instance=ExtResource("4_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.593423, -4.99398, 0)
 script = ExtResource("5_ehv2h")
-movement = 1
-device_id = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player3" unique_id=1972992140]
 mesh = SubResource("BoxMesh_bjebc")
@@ -136,8 +134,6 @@ mesh = SubResource("BoxMesh_bjebc")
 [node name="Player4" parent="." unique_id=2126950180 instance=ExtResource("4_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9391823, -4.99398, 0)
 script = ExtResource("5_ehv2h")
-movement = 1
-device_id = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player4" unique_id=136677075]
 mesh = SubResource("BoxMesh_bjebc")
