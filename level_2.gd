@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 	#print(InputMap.get_actions())
 
+# Nothing
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -16,6 +17,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	$ObstacleStatic.global_position.y = $UI/StaticSlider.value
+	$Obstacles/AnimatableBody3D/AnimationPlayer.play("move")
 	
 	for child in get_children():
 		if child is PhysicsBody3D && child.has_method("apply_force"):

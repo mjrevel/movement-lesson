@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dj6exvdlv5rhk"]
+
+[node name="Evel8" type="Node3D" unique_id=1273193077]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=351804891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8300653)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1585085346]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1303404477]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1668932623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10612965, 2.453459)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=133079598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.50763166)
+operation = 2

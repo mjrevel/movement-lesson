@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Movement-Lesson-V4-6"
-run/main_scene="uid://bax5ru7xvkws8"
+run/main_scene="uid://lgx3hc0kn68p"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

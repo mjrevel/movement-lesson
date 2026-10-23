@@ -13,7 +13,7 @@ enum ForceNames {NONE, IMPULSE, FORCE}
 func _ready() -> void:
 	can_sleep = false
 	#apply_central_impulse(Vector3(2,0, 0))
-	$"../Obstacles/AnimatableBody3D/AnimationPlayer".play("move")
+	#$"../Obstacles/AnimatableBody3D/AnimationPlayer".play("move")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

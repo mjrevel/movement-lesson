@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		
 		for i in get_slide_collision_count():
 			var collider = get_slide_collision(i).get_collider()
-			if collider is CharacterBody3D:
+			if collider is RigidBody3D:
 				collider.apply_impulse(direction.normalized() * SPEED * delta * 200)
 		
 	elif movement == MoveType.MOVE_AND_COLLIDE:
