@@ -7,6 +7,11 @@ const JUMP_VELOCITY = 4.5
 enum MoveType {MOVE_AND_SLIDE, MOVE_AND_COLLIDE}
 @export var movement: MoveType = MoveType.MOVE_AND_SLIDE
 
+@export var health: int = 100
+
+func _ready() -> void:
+	SignalBus.update_health.connect(_change_hp)
+
 func _physics_process(delta: float) -> void:
 	if movement == MoveType.MOVE_AND_SLIDE:
 		# Add the gravity.
@@ -56,3 +61,7 @@ func _physics_process(delta: float) -> void:
 			
 func on_ground() -> bool:
 	return $ShapeCast3D.is_colliding()
+	
+func _change_hp(hp) -> void:
+	health -= hp
+	print(health)
