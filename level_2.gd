@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$ObstacleStatic.global_position.y = $UI/StaticSlider.value
 	
 	for child in get_children():

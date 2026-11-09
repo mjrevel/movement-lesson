@@ -109,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53351974, 9.825052)
 
 [node name="ObstacleStatic" type="StaticBody3D" parent="." unique_id=1386601747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.18752, 11.488275, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleStatic" unique_id=1078195003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.714307, 0)
@@ -120,12 +121,14 @@ mesh = SubResource("BoxMesh_ihfcg")
 
 [node name="Player" parent="." unique_id=901363984 instance=ExtResource("3_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.922636, -4.8021193, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=399130408]
 mesh = SubResource("BoxMesh_5hph3")
 
 [node name="Player3" parent="." unique_id=825844251 instance=ExtResource("4_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.593423, -4.99398, 0)
+visible = false
 script = ExtResource("5_ehv2h")
 device_id = "0"
 
@@ -134,6 +137,7 @@ mesh = SubResource("BoxMesh_bjebc")
 
 [node name="Player4" parent="." unique_id=2126950180 instance=ExtResource("4_7dov7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9391823, -4.99398, 0)
+visible = false
 script = ExtResource("5_ehv2h")
 device_id = "0"
 
@@ -160,6 +164,7 @@ mesh = SubResource("BoxMesh_3hls8")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Obstacles" unique_id=649397402]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.106146, -4.510851, 0)
+visible = false
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_3g5ob")
 
@@ -171,6 +176,7 @@ shape = SubResource("BoxShape3D_3g5ob")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Obstacles" unique_id=1351152952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9377704, -5.7013245, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/AnimatableBody3D" unique_id=1725947201]
 shape = SubResource("BoxShape3D_4u130")

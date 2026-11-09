@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bn7n4qeyujkbb"]
+
+[ext_resource type="Script" uid="uid://b2g45ukbstaer" path="res://enemy.gd" id="1_tt7e2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f4npb"]
+radius = 3.8315198
+
+[sub_resource type="BoxMesh" id="BoxMesh_sogr1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4npb"]
+
+[node name="Enemy" type="RigidBody3D" unique_id=961898317]
+script = ExtResource("1_tt7e2")
+
+[node name="Detection" type="Area3D" parent="." unique_id=519747251]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection" unique_id=1702889587]
+shape = SubResource("SphereShape3D_f4npb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=782923926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006483793, 0.004690498, -0.004647553)
+mesh = SubResource("BoxMesh_sogr1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1134355109]
+shape = SubResource("BoxShape3D_f4npb")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_dedection_body_entered"]
