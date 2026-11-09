@@ -6,11 +6,14 @@ enum MoveType {MOVE_AND_SLIDE, MOVE_AND_COLLIDE}
 
 @export var movement: MoveType = MoveType.MOVE_AND_SLIDE
 @export var device_id: String = "0"
+@export var health: int = 100
 
 var p: String
 var jump_request: bool = false
 
 func _ready() -> void:
+	SignalBus.update_health.connect(_change_hp)
+	
 	if device_id == "0":
 		p = ""
 	else:
@@ -61,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		
 		for i in get_slide_collision_count():
 			var collider = get_slide_collision(i).get_collider()
-			if collider is CharacterBody3D:
+			if collider is RigidBody3D:
 				collider.apply_impulse(direction.normalized() * SPEED * delta * 200)
 		
 	elif movement == MoveType.MOVE_AND_COLLIDE:
@@ -84,3 +87,11 @@ func _unhandled_input(event):
 	# Handle jump.
 	if event.is_action_pressed(p + "JUMP"):
 		jump_request = true
+
+
+func _on_jharea_3d_body_entered(body: Node3D) -> void:
+	global_position = Vector3(-6, 0, 0)
+	
+func _change_hp(hp) -> void:
+	health -= hp
+	print(health)
